@@ -32,4 +32,13 @@ router.post('/addNew', (req, res, next)=>{
 	res.redirect('/');
 });
 
+
+router.get('/remove', function(req, res, next){
+	var name = req.query.name;
+	db.collection('students').deleteOne({
+		name: name
+	})
+	res.redirect('/');
+});
+
 module.exports = router;
