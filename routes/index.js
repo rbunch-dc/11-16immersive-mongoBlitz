@@ -23,4 +23,13 @@ router.get('/addNew', (req, res, next)=>{
 	res.render('addNew', {});
 });
 
+router.post('/addNew', (req, res, next)=>{
+	var newStudentName = req.body.newStudentName;
+	db.collection('students').insertOne({
+		name: newStudentName,
+		cohortDate: 2017
+	});
+	res.redirect('/');
+});
+
 module.exports = router;
